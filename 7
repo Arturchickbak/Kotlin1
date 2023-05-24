@@ -1,0 +1,35 @@
+fun findIntersection(array1: IntArray, array2: IntArray): IntArray {
+    val intersection = mutableListOf<Int>()
+
+    val map1 = array1.groupBy { it }
+    val map2 = array2.groupBy { it }
+
+    for ((key, value1) in map1) {
+        val value2 = map2[key]
+
+        if (value2 != null) {
+            val commonCount = minOf(value1.size, value2.size)
+            intersection.addAll(List(commonCount) { key })
+        }
+    }
+
+    return intersection.toIntArray()
+}
+
+fun main() {
+    print("Введите элементы первого массива через пробел: ")
+    val input1 = readLine()?.trim()
+    val array1 = input1?.split(" ")?.mapNotNull { it.toIntOrNull() }?.toIntArray()
+
+    print("Введите элементы второго массива через пробел: ")
+    val input2 = readLine()?.trim()
+    val array2 = input2?.split(" ")?.mapNotNull { it.toIntOrNull() }?.toIntArray()
+
+    if (array1 == null || array2 == null) {
+        println("Неверные входные данные")
+        return
+    }
+
+    val intersection = findIntersection(array1, array2)
+    println("Пересечение массивов: ${intersection.joinToString(", ")}")
+}
