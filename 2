@@ -1,0 +1,18 @@
+fun countDistinctCharacters(input: String): Map<Char, Int> {
+    val charCountMap = mutableMapOf<Char, Int>()
+    
+    for (char in input) {
+        charCountMap[char] = charCountMap.getOrDefault(char, 0) + 1
+    }
+    
+    return charCountMap.toSortedMap()
+}
+
+fun main() {
+    val input = "AASADDSS"
+    val charCountMap = countDistinctCharacters(input)
+    
+    for ((char, count) in charCountMap) {
+        println("$char - $count")
+    }
+}
