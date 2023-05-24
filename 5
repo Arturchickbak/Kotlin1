@@ -1,0 +1,41 @@
+fun findIntegerExponent(n: Int, x: Int): Int? {
+    if (n == 1) {
+        return 0
+    }
+    
+    for (y in 1..n) {
+        var power = 1L
+        var exponent = 0
+        
+        while (power <= n) {
+            if (power == n) {
+                return exponent
+            }
+            
+            power *= x
+            exponent++
+        }
+    }
+    
+    return null
+}
+
+fun main() {
+    print("Введите число n: ")
+    val n = readLine()?.toIntOrNull()
+    
+    print("Введите основание степени x: ")
+    val x = readLine()?.toIntOrNull()
+    
+    if (n == null || x == null) {
+        println("Неверные входные данные")
+        return
+    }
+    
+    val exponent = findIntegerExponent(n, x)
+    if (exponent != null) {
+        println("Целочисленный показатель степени: $exponent")
+    } else {
+        println("Целочисленный показатель не существует")
+    }
+}
