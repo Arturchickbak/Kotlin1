@@ -1,0 +1,24 @@
+fun decimalToBinary(decimal: Int): String {
+    if (decimal == 0) {
+        return "0"
+    }
+    
+    var quotient = decimal
+    val binaryDigits = mutableListOf<Int>()
+    
+    while (quotient > 0) {
+        val remainder = quotient % 2
+        binaryDigits.add(remainder)
+        quotient /= 2
+    }
+    
+    return binaryDigits.reversed().joinToString("")
+}
+
+fun main() {
+    print("Введите натуральное число: ")
+    val decimal = readLine()?.toIntOrNull() ?: return
+    
+    val binary = decimalToBinary(decimal)
+    println("Двоичное представление числа $decimal: $binary")
+}
