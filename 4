@@ -1,0 +1,37 @@
+fun calculateResult(number1: Double, number2: Double, operator: Char): Double {
+    return when (operator) {
+        '+' -> number1 + number2
+        '-' -> number1 - number2
+        '*' -> number1 * number2
+        '/' -> number1 / number2
+        else -> throw IllegalArgumentException("Неверный символ операции")
+    }
+}
+
+fun main() {
+    print("Введите два числа и символ операции (в формате ЧИСЛО1 ЧИСЛО2 ОПЕРАЦИЯ): ")
+    val input = readLine()
+    
+    if (input != null) {
+        val inputParts = input.split(" ")
+        
+        if (inputParts.size != 3) {
+            println("Неверный формат ввода")
+            return
+        }
+        
+        val number1 = inputParts[0].toDoubleOrNull()
+        val number2 = inputParts[1].toDoubleOrNull()
+        val operator = inputParts[2].singleOrNull()
+        
+        if (number1 == null || number2 == null || operator == null) {
+            println("Неверные входные данные")
+            return
+        }
+        
+        val result = calculateResult(number1, number2, operator)
+        println("Результат: $result")
+    } else {
+        println("Неверный формат ввода")
+    }
+}
