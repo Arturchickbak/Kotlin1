@@ -1,0 +1,34 @@
+fun createOddNumber(digit1: Int, digit2: Int): Int? {
+    if (digit1 == digit2) {
+        return null
+    }
+    
+    val sum = digit1 + digit2
+    
+    if (sum % 2 == 0) {
+        return null
+    }
+    
+    return sum
+}
+
+fun main() {
+    print("Введите первую цифру: ")
+    val digit1 = readLine()?.toIntOrNull()
+    
+    print("Введите вторую цифру: ")
+    val digit2 = readLine()?.toIntOrNull()
+    
+    if (digit1 == null || digit2 == null) {
+        println("Неверные входные данные")
+        return
+    }
+    
+    val oddNumber = createOddNumber(digit1, digit2)
+    
+    if (oddNumber != null) {
+        println("Созданное нечетное число: $oddNumber")
+    } else {
+        println("Создать нечетное число невозможно")
+    }
+}
